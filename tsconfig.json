@@ -1,23 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "nodenext",
-    "lib": ["ES2022", "DOM"],
-    "moduleResolution": "nodenext",
-    "rootDir": ".",
-    "outDir": "build",
-    "allowSyntheticDefaultImports": true,
-    "importHelpers": true,
-    "alwaysStrict": true,
-    "sourceMap": true,
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "types": ["node"],
+    "noEmit": true,
+    "strict": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitAny": false,
-    "noImplicitThis": false,
-    "strictNullChecks": false,
+    "noUnusedParameters": true
   },
-  "include": ["src", "__tests__"]
+  "include": ["src/**/*.ts", "vitest.config.ts"]
 }
