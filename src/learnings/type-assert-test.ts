@@ -1,6 +1,5 @@
 type Equal<X, Y> =
-  (<T>() => T extends X ? 1 : 2) extends
-  (<T>() => T extends Y ? 1 : 2)
+  (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
     ? true
     : false;
 
@@ -17,7 +16,6 @@ type ExpectedOutput = { NAME: string; AGE: number };
 
 // ✅ PASSES: Compiles with no errors
 type Test_Success = Expect<Equal<UppercaseKeys<TestInput>, ExpectedOutput>>;
-
 
 const x: Test_Success = true; // This line is just to avoid unused variable warning
 console.log(`x is ${x}`);

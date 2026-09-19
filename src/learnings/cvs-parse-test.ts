@@ -1,9 +1,9 @@
 // csv.ts
-import { parse } from "csv-parse";
+import { parse } from 'csv-parse';
 
 const parser = process.stdin.pipe(
   parse({
-    columns: true,        // Use the first row as object keys
+    columns: true, // Use the first row as object keys
     skip_empty_lines: true,
     trim: true,
   }),
