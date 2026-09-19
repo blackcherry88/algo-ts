@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Independent algorithms and data structures for learning TypeScript.",
   "type": "module",
+  "packageManager": "bun@1.4.2",
   "engines": {
     "node": "^22.13.0 || ^24.0.0 || >=26.0.0"
   },
@@ -19,6 +20,7 @@
     "vitest": "^4.1.11"
   },
   "scripts": {
+    "build": "bun build $(find src -type f -name '*.ts' -print) --outdir build --target node",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit --watch",
     "test": "vitest run",
@@ -27,9 +29,12 @@
     "lint": "eslint .",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm test"
+    "check": "bun run typecheck && bun run lint && bun run format:check && bun run test"
   },
   "author": "Tao Hu",
   "license": "Apache-2.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "csv-parse": "^7.0.2"
+  }
 }

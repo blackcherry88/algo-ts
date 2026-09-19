@@ -30,29 +30,29 @@ Colocation keeps each implementation and its examples together and avoids mainta
 
 ## Getting started
 
-Use Node.js 24 LTS and npm. The supported Node versions are specified in `package.json`; Node 22 requires at least 22.13.0.
+Use Bun 1.4.2 or newer. Bun provides the package manager, script runner, test runner, and production bundler for this project. Node.js is still supported for the TypeScript and ESLint tooling; the supported Node versions are specified in `package.json`.
 
 ```sh
-npm ci
-npm run check
+bun install --frozen-lockfile
+bun run check
 ```
 
-Commit `package-lock.json` when dependencies change so installations remain reproducible.
+Commit `bun.lock` when dependencies change so installations remain reproducible.
 
 ## Learning workflow
 
 ```sh
 # Run every test once
-npm test
+bun run test
 
 # Run just one algorithm's tests
-npm test -- src/sorting/bubble-sort.test.ts
+bun run test -- src/sorting/bubble-sort.test.ts
 
 # Watch one algorithm while editing
-npm run test:watch -- src/sorting/bubble-sort.test.ts
+bun run test:watch -- src/sorting/bubble-sort.test.ts
 
 # Check TypeScript as you edit
-npm run typecheck:watch
+bun run typecheck:watch
 ```
 
 Import implementations directly in tests:
@@ -71,30 +71,32 @@ When adding an algorithm:
 1. Add a descriptive, kebab-case `.ts` file under its topic and export the implementation.
 2. Explain its approach, time/space complexity, assumptions, and whether it mutates its input.
 3. Add a matching `.test.ts` file covering full results, empty and small inputs, duplicates, and relevant edge cases.
-4. Run `npm run check` before committing.
+4. Run `bun run check` before committing.
 
 ## Commands
 
 | Command                   | Purpose                                                                                       |
 | ------------------------- | --------------------------------------------------------------------------------------------- |
-| `npm run typecheck`       | Check implementations, tests, and Vitest configuration without emitting JavaScript            |
-| `npm run typecheck:watch` | Continuously check TypeScript                                                                 |
-| `npm test`                | Run all tests once                                                                            |
-| `npm run test:watch`      | Rerun affected tests while editing                                                            |
-| `npm run test:coverage`   | Report implementation coverage, including untested files; write HTML to `coverage/index.html` |
-| `npm run lint`            | Check code with ESLint                                                                        |
-| `npm run format`          | Format source, configuration, and documentation                                               |
-| `npm run format:check`    | Check formatting without changing files                                                       |
-| `npm run check`           | Run type checking, linting, formatting checks, and tests                                      |
+| `bun run build`           | Bundle every TypeScript file under `src/` into `build/` for Node.js                           |
+| `bun run typecheck`       | Check implementations, tests, and Vitest configuration without emitting JavaScript            |
+| `bun run typecheck:watch` | Continuously check TypeScript                                                                 |
+| `bun run test`            | Run all tests once                                                                            |
+| `bun run test:watch`      | Rerun affected tests while editing                                                            |
+| `bun run test:coverage`   | Report implementation coverage, including untested files; write HTML to `coverage/index.html` |
+| `bun run lint`            | Check code with ESLint                                                                        |
+| `bun run format`          | Format source, configuration, and documentation                                               |
+| `bun run format:check`    | Check formatting without changing files                                                       |
+| `bun run check`           | Run type checking, linting, formatting checks, and tests                                      |
 
 ## Configuration choices
 
 - The package is private to prevent accidental npm publication. All dependencies are development tools.
+- Bun runs the project scripts and bundler; Vitest remains the test runner and coverage tool.
 - TypeScript uses `strict` checking and an ES2022 baseline with Node types. Browser DOM globals are not enabled.
 - `noEmit` makes TypeScript a checker; Vitest transforms and executes the tests. Vitest does not replace the separate type-checking step.
 - ES modules and `moduleResolution: "Bundler"` match Vitest's Vite-based execution and allow extensionless relative imports. This setup is intended for running exercises through Vitest. A future compiled Node application would need its own build configuration and Node-compatible module resolution.
 - Tests import Vitest functions explicitly; no global test types or runtime globals are injected.
-- There is no application `start` command or release build because this repository is a collection of exercises.
+- `bun run build` bundles every TypeScript file under `src/` for Node.js, including colocated tests.
 - TypeScript is kept on the 6.0 line to stay within the installed `typescript-eslint` support range. Recheck compatibility when upgrading the compiler.
 
 See the [TypeScript compiler options](https://www.typescriptlang.org/tsconfig/) and [typescript-eslint compatibility documentation](https://typescript-eslint.io/users/dependency-versions/) for details.
