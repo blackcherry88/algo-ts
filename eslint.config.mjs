@@ -10,7 +10,6 @@ export default [
   {
     files: ['**/*.ts'],
     rules: {
-      '@typescript-eslint/explicit-function-return-type': 'warn',
     },
   },
   {

@@ -29,7 +29,8 @@
     "lint": "eslint .",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "check": "bun run typecheck && bun run lint && bun run format:check && bun run test"
+    "check": "bun run typecheck && bun run lint && bun run format:check && bun run test",
+    "learnings": "bun run src/learnings"
   },
   "author": "Tao Hu",
   "license": "Apache-2.0",
