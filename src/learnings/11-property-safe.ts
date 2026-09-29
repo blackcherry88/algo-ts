@@ -1,22 +1,19 @@
-function getProperty<T, K extends keyof T>(object: T, key: K): T[K] {
-  return object[key];
+function getProperty<T, K extends keyof T>(
+    object: T,
+    key: K
+): T[K] {
+    return object[key];
 }
 
 const user = {
-  id: 123,
-  name: 'Ada',
-  active: true,
+    id: 123,
+    name: "Ada",
+    active: true,
 };
 
-const userName = getProperty(user, 'name');
-// getProperty(user, "email"); // error
+const name = getProperty(user, "name");
 
-console.log(`${user.name}'s name is ${userName}`);
-
-
-function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
-  return items.map(item => item[key]);
-}
+console.log(`${user}'s name is ${name}`);
 
 const users = [{ id: 1, name: 'A' }, { id: 2, name: 'B' }];
 const names = pluck(users, 'name'); // string[], inferred
