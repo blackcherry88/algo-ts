@@ -13,3 +13,5 @@ console.log(firstString); // Output: 'a'
 const emptyArray: number[] = [];
 const firstEmpty = first(emptyArray); // Type is number | undefined
 console.log(firstEmpty); // Output: undefined
+
+export {};

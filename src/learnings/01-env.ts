@@ -31,3 +31,5 @@ function validateEnv(env: Record<string, string | undefined>): EnvConfig {
 // Usage Example
 const config = validateEnv(process.env);
 console.log(`Running in ${config.nodeEnv} on port ${config.port}`);
+
+export {};

@@ -30,3 +30,5 @@ const rawData: unknown[] = [
 
 const validMetrics = proessTelemetryStream(rawData);
 console.log('Valid Metric Events:', validMetrics);
+
+export {};

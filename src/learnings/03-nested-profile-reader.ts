@@ -22,3 +22,5 @@ function isEmailNotificationEnabled(user: UserProfile): boolean {
 const user: UserProfile = { id: 'usr_101' };
 console.log(getPrimaryEmail(user)); // "noreply@example.com"
 console.log(isEmailNotificationEnabled(user)); // false
+
+export {};

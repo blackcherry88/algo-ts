@@ -22,3 +22,5 @@ function loadConfig(overrides: Partial<AppOptions> = {}): Readonly<AppOptions> {
 // Usage Example
 const customConfig = loadConfig({ port: 443, ssl: true });
 console.log(customConfig.host); // Inferred cleanly as string
+
+export {};

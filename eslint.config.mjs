@@ -9,8 +9,7 @@ export default [
   ...tseslint.configs.recommended,
   {
     files: ['**/*.ts'],
-    rules: {
-    },
+    rules: {},
   },
   {
     ...vitest.configs.recommended,

@@ -12,3 +12,5 @@ process.stdin
     console.error(' stdin error:', error);
     process.exitCode = 1;
   });
+
+export {};

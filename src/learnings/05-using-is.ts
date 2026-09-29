@@ -32,3 +32,5 @@ try {
 } catch (error) {
   console.error(handleFetchError(error));
 }
+
+export {};

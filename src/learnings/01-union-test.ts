@@ -17,3 +17,5 @@ function handleEvent(event: MyEvent): string {
 
 const r = handleEvent({ type: 'LOGIN', userId: '123' });
 console.log(r); // Output: User 123 logged in
+
+export {};

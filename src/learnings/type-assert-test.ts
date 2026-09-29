@@ -40,3 +40,5 @@ const buildUser = (overrides?: Partial<User>): User => ({
 // Test Case
 const adminUser = buildUser({ role: 'admin' });
 console.log(adminUser); // Output: { id: '
+
+export {};
