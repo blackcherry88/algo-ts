@@ -1,9 +1,10 @@
+import { assertNever } from "./assert-never";
+
 type RequestState<T> = 
     | { status: "idle" }
     | { status: "loading" }
     | { status: "success", data: T }
     | { status: "error"; error: Error }
-
 
 function renderUsers(
     state: RequestState<string[]>
@@ -18,9 +19,10 @@ function renderUsers(
         case "error":
             return state.error.message;
         default:
-            // must have return, uses state not state.error
-            // x satisfies never is never if x is never 
-            return state satisfies never;
+            return assertNever(state);
+            // // must have return, uses state not state.error
+            // // x satisfies never will return state
+            // return state satisfies never;
     }
 }
 
