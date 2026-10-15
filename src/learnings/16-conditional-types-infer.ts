@@ -1,7 +1,4 @@
-type ElementOf<T> = 
-    T extends readonly (infer Item)[]
-        ? Item
-        : T
+type ElementOf<T> = T extends readonly (infer Item)[] ? Item : T;
 
 type A = ElementOf<string[]>;
 
@@ -9,13 +6,10 @@ const element: A = 'Hello';
 
 console.log('element of string[] is', element);
 
-type FunctionResult<T> = 
-    T extends (...args: never[]) => infer R
-        ? R
-        : never;
+type FunctionResult<T> = T extends (...args: never[]) => infer R ? R : never;
 
 function add(x: number, y: number) {
-    return x + y;
+  return x + y;
 }
 
 const x = 2;

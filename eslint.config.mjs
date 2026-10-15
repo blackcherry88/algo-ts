@@ -15,5 +15,21 @@ export default [
     ...vitest.configs.recommended,
     files: ['src/**/*.test.ts'],
   },
+  // Legacy CommonJS modules. ESLint treats .js as an ES module by default, so
+  // `exports` reads as an undefined global without this. Scoped to .cjs and the
+  // one legacy learnings file, because sibling .js files are real ES modules.
+  {
+    files: ['**/*.cjs', 'src/learnings/legacy-math.js'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        exports: 'writable',
+        module: 'writable',
+        require: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+      },
+    },
+  },
   eslintConfigPrettier,
 ];

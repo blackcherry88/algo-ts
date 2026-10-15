@@ -5,6 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": { "legacy-math": ["./src/learnings/legacy-math.js"] },
+    "allowJs": true,
     "types": ["node"],
     "noEmit": true,
     "strict": true,
